@@ -223,10 +223,10 @@ int main(void)
 //        Timer_A2_Update_Duty_Cycle_2(1700);
 //        LED2_Output(RGB_LED_RED);
 //        Clock_Delay1ms(3000);
-//
+
 //        // Rotate to 180
 //        Timer_A2_Update_Duty_Cycle_1(7000);
-//        Timer_A2_Update_Duty_Cycle_2(7000);
+//      Timer_A2_Update_Duty_Cycle_2(7000);
 //        LED2_Output(RGB_LED_BLUE);
 //        Clock_Delay1ms(3000);
 
