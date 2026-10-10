@@ -36,11 +36,11 @@ Following the intial procedures set in section 5, has led to the following Oscil
 
 **Figure 1: [File name: ece528L_lab1_servo_0_degrees_Steve_Ortiz]**
 
-![Figure 1](Screenshots/ece528L_lab_servo_0_degrees_Steve_Ortiz.png)
+![Figure 1](Screenshots/ece528L_lab1_servo_0_degrees_Steve_Ortiz.png)
 
 **Figure 2: [File name: ece528L_lab1_servo_0_degrees_pulse_width_Steve_Ortiz]**
 
-![Figure 2](Screenshots/ece528L_lab_servo_0_degrees_pulse_width_Steve_Ortiz.png)
+![Figure 2](Screenshots/ece528L_lab1_servo_0_degrees_pulse_width_Steve_Ortiz.png)
 
 **Figure 3: [File name: ece528L_lab1_servo_180_degrees_Steve_Ortiz]**
 
