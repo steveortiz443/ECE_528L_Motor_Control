@@ -80,7 +80,13 @@ void SysTick_Handler(void)
  */
 void Bumper_Switches_Handler(uint8_t bumper_switch_state)
 {
-    printf("Collision Detected! Bumper Switch State: 0x%02X\n", bumper_switch_state);
+//    printf("Collision Detected! Bumper Switch State: 0x%02X\n", bumper_switch_state);
+//    P8->OUT |= 0x80;
+
+    if (collision_detected == 0){
+        printf("Collision Detected! Bumper Switch State: 0x%02X\n", bumper_switch_state);
+        collision_detected = 1;
+    }
 }
 
 /**
@@ -140,7 +146,20 @@ void Drive_Pattern_1()
 }
 
 /**
- * @brief
+ * @brief Resets the collision_detected flag and executes a predefined drive pattern using the DC motors.
+ *
+ * This function executes a predefined drive pattern using the DC motors, before reseting the collision_detected flag.
+ * It involves a sequence of motor commands to create specific movements. The sequence consists of:
+ *
+ * 1. Stopping the motors for 2 seconds.
+ * 2. Setting both motors to move backward with a 30% duty cycle for 2 seconds.
+ * 3. Stopping the motors for 1 second.
+ * 4. Setting both motors to move right with a 10% duty cycle for 4 seconds.
+ * 5. Stopping the motors for 2 seconds.
+ *
+ * After which it sets the collision_detected flag to 0
+ *
+ * @note The Clock_Delay1ms function is used to introduce delays between motor actions.
  *
  * @param None
  *
@@ -149,37 +168,37 @@ void Drive_Pattern_1()
 void Handle_Collision()
 {
     // Stop the motors
-
+    Motor_Stop();
 
     // Make a function call to Clock_Delay1ms(2000)
-
+    Clock_Delay1ms(2000);
 
     // Move the motors backward with 30% duty cycle
-
+    Motor_Backward(4500, 4500);
 
     // Make a function call to Clock_Delay1ms(2000)
-
+    Clock_Delay1ms(2000);
 
     // Stop the motors
-
+    Motor_Stop();
 
     // Make a function call to Clock_Delay1ms(1000)
-
+    Clock_Delay1ms(1000);
 
     // Make the robot turn to the right with 10% duty cycle
-
+    Motor_Right(1500, 1500);
 
     // Make a function call to Clock_Delay1ms(4000)
-
+    Clock_Delay1ms(4000);
 
     // Stop the motors
-
+    Motor_Stop();
 
     // Make a function call to Clock_Delay1ms(2000)
-
+    Clock_Delay1ms(2000);
 
     // Set the collision_detected flag to 0
-
+    collision_detected = 0;
 }
 
 int main(void)
@@ -232,13 +251,13 @@ int main(void)
 
 //        Drive_Pattern_1();
 
-//        if (collision_detected == 1)
-//        {
-//            Handle_Collision();
-//        }
-//        else
-//        {
-//            Motor_Forward(4500, 4500);
-//        }
+        if (collision_detected == 1)
+        {
+            Handle_Collision();
+        }
+        else
+        {
+            Motor_Forward(4500, 4500);
+        }
     }
 }
